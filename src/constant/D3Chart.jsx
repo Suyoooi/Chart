@@ -1,91 +1,110 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import * as d3 from "d3";
 
-const D3Chart = (props) => {
-  const divRef = useRef < HTMLDivElement > null;
-  const [graphHeight, setGraphData] = useState(0);
-
+const D3Chart = () => {
   useEffect(() => {
-    const margin = { top: 20, right: 30, bottom: 30, left: 40 };
+    makeGraph();
+  }, []);
 
-    setGraphData(props.height);
+  const makeGraph = () => {
+    // setting canvas
+    const width = 400;
+    const height = 400;
+    const margin = { top: 40, left: 40, bottom: 40, right: 40 };
 
-    const currentElement = divRef.current;
-    const width = currentElement?.offsetWidth;
-    const height = graphHeight;
-
-    const documentElement = d3
-      .select(currentElement)
-      .call((g) => g.select("svg").remove())
+    const svg = d3
+      .select("body")
       .append("svg")
-      .attr("viewBox", `0,0,${width},${height}`);
+      .attr("width", width)
+      .attr("height", height);
 
-    const parseDate = d3.timeParse("%Y-%m-%d");
+    // data
+    const data = [
+      { month: "1월", value: 40, color: "red" },
+      { month: "2월", value: 10, color: "orange" },
+      { month: "3월", value: 60, color: "yellow" },
+      { month: "4월", value: 95, color: "green" },
+      { month: "5월", value: 30, color: "blue" },
+      { month: "6월", value: 78, color: "indigo" },
+    ];
 
-    const data = props.values.map(({ d, v }) => ({
-      d: parseDate(d),
-      v,
-    }));
-
-    const d3Type = d3
-      .line()
-      .x((value) => x(value.d))
-      .y((value) => y(value.v));
-
-    const xDomain = d3.extent(data, (d) => d.d);
-
+    // setting axis
     const x = d3
-      .scaleUtc()
-      .domain(xDomain)
+      .scaleBand()
+      .domain(data.map((d) => d.month))
       .range([margin.left, width - margin.right]);
 
-    const yMax = d3.max(data, (d) => d.v);
     const y = d3
       .scaleLinear()
-      .domain([0, yMax])
+      .domain([0, d3.max(data, (d) => d.value)])
       .nice()
       .range([height - margin.bottom, margin.top]);
 
-    const xAxis = (g) =>
-      g.attr("transform", `translate(0,${height - margin.bottom})`).call(
-        d3
-          .axisBottom(x)
-          .ticks(width / 80)
-          .tickSizeOuter(0)
-      );
-
-    documentElement.append < SVGGElement > "g".call(xAxis);
+    const xAxis = (g) => {
+      return g
+        .attr("transform", `translate(0, ${height})`)
+        .attr("transform", `translate(0, ${height - margin.bottom})`)
+        .call(d3.axisBottom(x).tickSizeOuter(0));
+    };
 
     const yAxis = (g) =>
-      g.attr("transform", `translate(${margin.left},0)`).call(d3.axisLeft(y));
+      g
+        .attr("transform", `translate(${margin.left}, 0)`)
+        .call(
+          d3.axisLeft(y).tickValues([0, 20, 40, 60, 80, 100]).tickSize(-width)
+        )
+        .call((g) => g.select(".domain").remove())
+        .attr("class", "grid");
 
-    documentElement.append <
-      SVGGElement >
-      "g".call(yAxis).call((g) => g.select(".domain").remove());
+    // apply axis to canvas
+    svg.append("g").call(xAxis);
+    svg.append("g").call(yAxis);
 
-    documentElement
+    // vertical bar chart
+    svg
+      .append("g")
+      .selectAll("rect")
+      .data(data)
+      .enter()
+      .append("rect")
+      .attr("x", (data) => x(data.month) + x.bandwidth() / 2 - 10)
+      .attr("y", (data) => y(data.value))
+      .attr("width", 20)
+      .attr("height", (data) => y(0) - y(data.value))
+      .attr("class", "bar-chart")
+      .attr("fill", (data) => data.color);
+
+    //line chart
+    const line = d3
+      .line()
+      .x((d) => x(d.month) + x.bandwidth() / 2)
+      .y((d) => y(d.value));
+
+    svg
       .append("path")
       .datum(data)
       .attr("fill", "none")
-      .attr("stroke", "steelblue")
-      .attr("stroke-width", 1.5)
-      .attr("stroke-linejoin", "round")
-      .attr("stroke-linecap", "round")
-      .attr("d", (data) => d3Type(data));
-  }, [props.values, graphHeight, props]);
+      .attr("stroke", "red")
+      .attr("stroke-width", 1)
+      .attr("d", line);
 
-  return (
-    <>
-      <h2> Line Chart </h2>
-      <div
-        ref={divRef}
-        style={{
-          width: "100%",
-          height: graphHeight,
-        }}
-      />
-    </>
-  );
+    // add text
+    svg
+      .append("g")
+      .selectAll("text")
+      .data(data)
+      .enter()
+      .append("text")
+      .text((d) => d.value)
+      .attr("x", (data) => x(data.month) + x.bandwidth() / 2)
+      .attr("y", (data) => y(data.value) - 5)
+      .attr("fill", "black")
+      .attr("font-family", "Tahoma")
+      .attr("font-size", "12px")
+      .attr("text-anchor", "middle");
+  };
+
+  return <></>;
 };
 
 export default D3Chart;
