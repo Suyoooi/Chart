@@ -19,10 +19,17 @@ const Echartfor = () => {
   });
 
   return (
-    <ECharts
-      option={options}
-      opts={{ renderer: "svg", width: "auto", height: "100%" }}
-    />
+    <div>
+      <h1>EChart.js</h1>
+      <ECharts
+        option={options}
+        opts={{
+          renderer: "svg",
+          width: "auto",
+          height: "500",
+        }}
+      />
+    </div>
   );
 };
 

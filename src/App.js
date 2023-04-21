@@ -10,7 +10,6 @@ function App() {
     <div className="App">
       <Main />
       <Echartfor />
-      <Grafana />
       <ReactChart />
       <ReactChartTest />
       <D3Chart />

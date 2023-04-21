@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import * as d3 from "d3";
+import styled from "styled-components";
 
 const D3Chart = () => {
   useEffect(() => {
@@ -61,18 +62,18 @@ const D3Chart = () => {
     svg.append("g").call(yAxis);
 
     // vertical bar chart
-    svg
-      .append("g")
-      .selectAll("rect")
-      .data(data)
-      .enter()
-      .append("rect")
-      .attr("x", (data) => x(data.month) + x.bandwidth() / 2 - 10)
-      .attr("y", (data) => y(data.value))
-      .attr("width", 20)
-      .attr("height", (data) => y(0) - y(data.value))
-      .attr("class", "bar-chart")
-      .attr("fill", (data) => data.color);
+    // svg
+    //   .append("g")
+    //   .selectAll("rect")
+    //   .data(data)
+    //   .enter()
+    //   .append("rect")
+    //   .attr("x", (data) => x(data.month) + x.bandwidth() / 2 - 10)
+    //   .attr("y", (data) => y(data.value))
+    //   .attr("width", 20)
+    //   .attr("height", (data) => y(0) - y(data.value))
+    //   .attr("class", "bar-chart")
+    //   .attr("fill", (data) => data.color);
 
     //line chart
     const line = d3
@@ -104,7 +105,19 @@ const D3Chart = () => {
       .attr("text-anchor", "middle");
   };
 
-  return <></>;
+  return (
+    <>
+      <Container>
+        <h1>D3Chart</h1>
+      </Container>
+    </>
+  );
 };
 
 export default D3Chart;
+
+const Container = styled.div`
+  width: 90vw;
+  max-width: 900px;
+  margin-top: 300px;
+`;

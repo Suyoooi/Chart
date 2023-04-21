@@ -39,6 +39,7 @@ const data = {
 const ReactChart = () => {
   return (
     <Container>
+      <h1>React-Chart-2</h1>
       <Line data={data} />
     </Container>
   );
@@ -49,4 +50,5 @@ export default ReactChart;
 const Container = styled.div`
   width: 90vw;
   max-width: 900px;
+  margin-top: 300px;
 `;
