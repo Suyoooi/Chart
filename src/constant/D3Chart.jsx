@@ -21,18 +21,30 @@ const D3Chart = () => {
 
     // data
     const data = [
-      { month: "1월", value: 40, color: "red" },
-      { month: "2월", value: 10, color: "orange" },
-      { month: "3월", value: 60, color: "yellow" },
-      { month: "4월", value: 95, color: "green" },
-      { month: "5월", value: 30, color: "blue" },
-      { month: "6월", value: 78, color: "indigo" },
+      { name: "A", value: 34, color: "#efa86b" },
+      { name: "B", value: 15, color: "#c1484f" },
+      { name: "C", value: 60, color: "#d35d50" },
+      { name: "D", value: 90, color: "#f4c17c" },
+      { name: "E", value: 40, color: "#fae8a4" },
+      { name: "F", value: 12, color: "#df7454" },
+      { name: "G", value: 55, color: "#e88d5d" },
+      { name: "H", value: 60, color: "#f8d690" },
     ];
+
+    // const data = [
+    //   { month: "1", value: 40, color: "red" },
+    //   { month: "2", value: 10, color: "orange" },
+    //   { month: "3", value: 60, color: "yellow" },
+    //   { month: "4", value: 113, color: "green" },
+    //   { month: "5", value: 30, color: "blue" },
+    //   { month: "6", value: 78, color: "indigo" },
+    //   { month: "7", value: 28, color: "pink" },
+    // ];
 
     // setting axis
     const x = d3
       .scaleBand()
-      .domain(data.map((d) => d.month))
+      .domain(data.map((d) => d.name))
       .range([margin.left, width - margin.right]);
 
     const y = d3
@@ -52,7 +64,10 @@ const D3Chart = () => {
       g
         .attr("transform", `translate(${margin.left}, 0)`)
         .call(
-          d3.axisLeft(y).tickValues([0, 20, 40, 60, 80, 100]).tickSize(-width)
+          d3
+            .axisLeft(y)
+            .tickValues([0, 20, 40, 60, 80, 100, 120])
+            .tickSize(-width)
         )
         .call((g) => g.select(".domain").remove())
         .attr("class", "grid");
@@ -78,7 +93,7 @@ const D3Chart = () => {
     //line chart
     const line = d3
       .line()
-      .x((d) => x(d.month) + x.bandwidth() / 2)
+      .x((d) => x(d.name) + x.bandwidth() / 2)
       .y((d) => y(d.value));
 
     svg
@@ -97,7 +112,7 @@ const D3Chart = () => {
       .enter()
       .append("text")
       .text((d) => d.value)
-      .attr("x", (data) => x(data.month) + x.bandwidth() / 2)
+      .attr("x", (data) => x(data.name) + x.bandwidth() / 2)
       .attr("y", (data) => y(data.value) - 5)
       .attr("fill", "black")
       .attr("font-family", "Tahoma")
