@@ -7,6 +7,7 @@ function App() {
     <div className="App">
       <Main />
       <Echartfor />
+      <Grafana />
     </div>
   );
 }
