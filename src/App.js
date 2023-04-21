@@ -1,8 +1,8 @@
 import "./App.css";
-import Echartfor from "./constant/EChartFor";
+import Echartfor from "./constant/EChart/EChartFor";
 import Main from "./constant/Main";
-import Echartfordatatest1 from "./constant/EChartForDataTest1";
-import Echartfordatatest2 from "./constant/EChartForDataTest2";
+import Echartfordatatest1 from "./constant/EChart/EChartForDataTest1";
+import Echartfordatatest2 from "./constant/EChart/EChartForDataTest2";
 
 function App() {
   return (
