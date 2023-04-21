@@ -1,18 +1,19 @@
 import "./App.css";
-import Echartfor from "./constant/EChartFor";
-import D3Chart from "./constant/D3Chart";
 import Main from "./constant/Main";
-import ReactChart from "./constant/React-Chart-2";
-import ReactChartTest from "./constant/React-Chart-2-Test";
+import ReactChart from "./constant/React-Chart-2-Test/React-Chart-2";
+import ReactChartTest from "./constant/React-Chart-2-Test/React-Chart-2-Test";
+import ReactChartTest2 from "./constant/React-Chart-2-Test/React-Chart-2-Test2";
+import ReactChartTest3 from "./constant/React-Chart-2-Test/React-Chart-2-Test3";
 
 function App() {
   return (
     <div className="App">
       <Main />
-      <Echartfor />
       <ReactChart />
       <ReactChartTest />
-      <D3Chart />
+      <ReactChartTest3 />
+
+      <ReactChartTest2 />
     </div>
   );
 }
