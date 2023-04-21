@@ -9,8 +9,8 @@ const D3Chart = () => {
 
   const makeGraph = () => {
     // setting canvas
-    const width = 400;
-    const height = 400;
+    const width = 1500;
+    const height = 800;
     const margin = { top: 40, left: 40, bottom: 40, right: 40 };
 
     const svg = d3
@@ -21,14 +21,32 @@ const D3Chart = () => {
 
     // data
     const data = [
-      { name: "A", value: 34, color: "#efa86b" },
-      { name: "B", value: 15, color: "#c1484f" },
-      { name: "C", value: 60, color: "#d35d50" },
-      { name: "D", value: 90, color: "#f4c17c" },
-      { name: "E", value: 40, color: "#fae8a4" },
-      { name: "F", value: 12, color: "#df7454" },
-      { name: "G", value: 55, color: "#e88d5d" },
-      { name: "H", value: 60, color: "#f8d690" },
+      { name: "1", value: 34, color: "#efa86b" },
+      { name: "2", value: 15, color: "#c1484f" },
+      { name: "3", value: 60, color: "#d35d50" },
+      { name: "4", value: 90, color: "#f4c17c" },
+      { name: "5", value: 40, color: "#fae8a4" },
+      { name: "6", value: 12, color: "#df7454" },
+      { name: "7", value: 55, color: "#e88d5d" },
+      { name: "8", value: 60, color: "#f8d690" },
+      { name: "9", value: 77, color: "#f8d690" },
+      { name: "10", value: 80, color: "#f8d690" },
+      { name: "11", value: 34, color: "#f8d690" },
+      { name: "12", value: 90, color: "#f8d690" },
+      { name: "13", value: 78, color: "#f8d690" },
+      { name: "14", value: 34, color: "#efa86b" },
+      { name: "15", value: 15, color: "#c1484f" },
+      { name: "16", value: 60, color: "#d35d50" },
+      { name: "17", value: 90, color: "#f4c17c" },
+      { name: "18", value: 40, color: "#fae8a4" },
+      { name: "19", value: 12, color: "#df7454" },
+      { name: "20", value: 55, color: "#e88d5d" },
+      { name: "21", value: 60, color: "#f8d690" },
+      { name: "22", value: 77, color: "#f8d690" },
+      { name: "23", value: 80, color: "#f8d690" },
+      { name: "24", value: 34, color: "#f8d690" },
+      { name: "25", value: 90, color: "#f8d690" },
+      { name: "26", value: 78, color: "#f8d690" },
     ];
 
     // const data = [
@@ -132,7 +150,7 @@ const D3Chart = () => {
 export default D3Chart;
 
 const Container = styled.div`
-  width: 90vw;
-  max-width: 900px;
+  /* width: 300vw; */
+  /* max-width: 1000px; */
   margin-top: 300px;
 `;
