@@ -24,7 +24,7 @@ const D3Chart = () => {
   for (let i = 0; i < numOfObjects; i++) {
     let name;
     do {
-      name = String(getRandomNumber(1, 10));
+      name = String(getRandomNumber(1, 1000000));
     } while (usedNames.includes(name)); // 이미 사용된 name 값인 경우 다시 랜덤 값 생성
 
     usedNames.push(name); // 사용된 name 값을 저장
