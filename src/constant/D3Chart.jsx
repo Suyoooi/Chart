@@ -7,6 +7,37 @@ const D3Chart = () => {
     makeGraph();
   }, []);
 
+  // 생성할 객체의 수
+  const numOfObjects = 1000;
+
+  // 랜덤한 숫자를 반환하는 함수
+  function getRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  // 객체 배열 생성
+  const objectsArray = [];
+
+  // 이미 사용된 name 값을 저장하는 배열
+  const usedNames = [];
+
+  for (let i = 0; i < numOfObjects; i++) {
+    let name;
+    do {
+      name = String(getRandomNumber(1, 10));
+    } while (usedNames.includes(name)); // 이미 사용된 name 값인 경우 다시 랜덤 값 생성
+
+    usedNames.push(name); // 사용된 name 값을 저장
+
+    const obj = {
+      name: name,
+      value: getRandomNumber(1, 100),
+    };
+    objectsArray.push(obj);
+  }
+
+  console.log(objectsArray);
+
   const makeGraph = () => {
     // setting canvas
     const width = 1500;
@@ -20,20 +51,7 @@ const D3Chart = () => {
       .attr("height", height);
 
     // data
-    const data = [
-      { name: "1", value: 34 },
-      { name: "2", value: 15 },
-      { name: "3", value: 60 },
-      { name: "4", value: 34 },
-      { name: "5", value: 15 },
-      { name: "6", value: 60 },
-      { name: "7", value: 34 },
-      { name: "8", value: 15 },
-      { name: "9", value: 60 },
-      { name: "10", value: 34 },
-      { name: "11", value: 15 },
-      { name: "12", value: 60 },
-    ];
+    const data = objectsArray;
 
     // setting axis
     const x = d3
