@@ -8,7 +8,7 @@ const D3Chart = () => {
   }, []);
 
   // 생성할 객체의 수
-  const numOfObjects = 1000;
+  const numOfObjects = 100;
 
   // 랜덤한 숫자를 반환하는 함수
   function getRandomNumber(min, max) {
@@ -24,7 +24,7 @@ const D3Chart = () => {
   for (let i = 0; i < numOfObjects; i++) {
     let name;
     do {
-      name = String(getRandomNumber(1, 1000000));
+      name = String(getRandomNumber(1, 1000));
     } while (usedNames.includes(name)); // 이미 사용된 name 값인 경우 다시 랜덤 값 생성
 
     usedNames.push(name); // 사용된 name 값을 저장
