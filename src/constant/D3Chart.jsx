@@ -36,8 +36,6 @@ const D3Chart = () => {
     objectsArray.push(obj);
   }
 
-  console.log(objectsArray);
-
   const makeGraph = () => {
     // setting canvas
     const width = 1500;
