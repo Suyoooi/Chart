@@ -21,43 +21,19 @@ const D3Chart = () => {
 
     // data
     const data = [
-      { name: "1", value: 34, color: "#efa86b" },
-      { name: "2", value: 15, color: "#c1484f" },
-      { name: "3", value: 60, color: "#d35d50" },
-      { name: "4", value: 90, color: "#f4c17c" },
-      { name: "5", value: 40, color: "#fae8a4" },
-      { name: "6", value: 12, color: "#df7454" },
-      { name: "7", value: 55, color: "#e88d5d" },
-      { name: "8", value: 60, color: "#f8d690" },
-      { name: "9", value: 77, color: "#f8d690" },
-      { name: "10", value: 80, color: "#f8d690" },
-      { name: "11", value: 34, color: "#f8d690" },
-      { name: "12", value: 90, color: "#f8d690" },
-      { name: "13", value: 78, color: "#f8d690" },
-      { name: "14", value: 34, color: "#efa86b" },
-      { name: "15", value: 15, color: "#c1484f" },
-      { name: "16", value: 60, color: "#d35d50" },
-      { name: "17", value: 90, color: "#f4c17c" },
-      { name: "18", value: 40, color: "#fae8a4" },
-      { name: "19", value: 12, color: "#df7454" },
-      { name: "20", value: 55, color: "#e88d5d" },
-      { name: "21", value: 60, color: "#f8d690" },
-      { name: "22", value: 77, color: "#f8d690" },
-      { name: "23", value: 80, color: "#f8d690" },
-      { name: "24", value: 34, color: "#f8d690" },
-      { name: "25", value: 90, color: "#f8d690" },
-      { name: "26", value: 78, color: "#f8d690" },
+      { name: "1", value: 34 },
+      { name: "2", value: 15 },
+      { name: "3", value: 60 },
+      { name: "4", value: 34 },
+      { name: "5", value: 15 },
+      { name: "6", value: 60 },
+      { name: "7", value: 34 },
+      { name: "8", value: 15 },
+      { name: "9", value: 60 },
+      { name: "10", value: 34 },
+      { name: "11", value: 15 },
+      { name: "12", value: 60 },
     ];
-
-    // const data = [
-    //   { month: "1", value: 40, color: "red" },
-    //   { month: "2", value: 10, color: "orange" },
-    //   { month: "3", value: 60, color: "yellow" },
-    //   { month: "4", value: 113, color: "green" },
-    //   { month: "5", value: 30, color: "blue" },
-    //   { month: "6", value: 78, color: "indigo" },
-    //   { month: "7", value: 28, color: "pink" },
-    // ];
 
     // setting axis
     const x = d3
