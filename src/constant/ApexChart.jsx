@@ -27,11 +27,11 @@ export default class ApexChart extends Component {
     this.state = {
       series: [
         {
-          name: "Desktops",
+          name: "Test Data 1",
           data: arr,
         },
         {
-          name: "Data2",
+          name: "Test Data 2",
           data: secondArr,
         },
       ],
@@ -49,12 +49,13 @@ export default class ApexChart extends Component {
           curve: "straight",
         },
         title: {
-          text: "Product Trends by Month",
-          align: "left",
+          text: "Apex Chart Testing . . .",
+          align: "center",
         },
         grid: {
           row: {
-            colors: ["#f3f3f3f3", "transparent"], // takes an array which will be repeated on columns
+            // takes an array which will be repeated on columns
+            colors: ["#f3f3f3f3", "transparent"],
             opacity: 0.5,
           },
         },
