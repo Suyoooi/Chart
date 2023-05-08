@@ -71,8 +71,8 @@ export default class ApexChart extends Component {
         options={this.state.options}
         series={this.state.series}
         typs="line"
-        width={500}
-        height={300}
+        width={800}
+        height={500}
       />
     );
   }
