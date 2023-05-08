@@ -11,9 +11,8 @@ function App() {
       <Main />
       <ReactChart />
       <ReactChartTest />
-      <ReactChartTest3 />
-
-      <ReactChartTest2 />
+      {/* <ReactChartTest3 />
+      <ReactChartTest2 /> */}
     </div>
   );
 }
