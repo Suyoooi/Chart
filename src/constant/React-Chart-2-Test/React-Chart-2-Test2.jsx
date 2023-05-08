@@ -63,7 +63,8 @@ const ReactChartTest2 = () => {
 export default ReactChartTest2;
 
 const Container = styled.div`
-  width: auto;
+  width: 2000px;
+  height: 800px;
   margin-top: 100px;
   margin-bottom: 200px;
 `;
