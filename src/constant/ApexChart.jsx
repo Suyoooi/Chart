@@ -5,15 +5,34 @@ export default class ApexChart extends Component {
   constructor(props) {
     super(props);
 
+    //y축 데이터 생성
+    const arr = [];
+    for (let i = 0; i < 10; i++) {
+      arr.push(Math.floor(Math.random() * 100) + 1);
+      console.log(arr);
+    }
+    const secondArr = [];
+    for (let i = 0; i < 10; i++) {
+      secondArr.push(Math.floor(Math.random() * 100) + 1);
+      console.log(secondArr);
+    }
+
+    //x축 데이터 생성
+    var array = [];
+    for (var i = 0; i < 10; i++) {
+      array.push("test");
+    }
+    console.log(array);
+
     this.state = {
       series: [
         {
           name: "Desktops",
-          data: [10, 41, 35, 51, 49, 62, 69, 91, 148],
+          data: arr,
         },
         {
           name: "Data2",
-          data: [1, 4, 15, 41, 69, 32, 39, 31, 48],
+          data: secondArr,
         },
       ],
 
@@ -40,17 +59,7 @@ export default class ApexChart extends Component {
           },
         },
         xaxis: {
-          categories: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-          ],
+          categories: array,
         },
       },
     };
