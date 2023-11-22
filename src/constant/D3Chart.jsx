@@ -7,10 +7,39 @@ const D3Chart = () => {
     makeGraph();
   }, []);
 
+  // 생성할 객체의 수
+  const numOfObjects = 100;
+
+  // 랜덤한 숫자를 반환하는 함수
+  function getRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  // 객체 배열 생성
+  const objectsArray = [];
+
+  // 이미 사용된 name 값을 저장하는 배열
+  const usedNames = [];
+
+  for (let i = 0; i < numOfObjects; i++) {
+    let name;
+    do {
+      name = String(getRandomNumber(1, 1000));
+    } while (usedNames.includes(name)); // 이미 사용된 name 값인 경우 다시 랜덤 값 생성
+
+    usedNames.push(name); // 사용된 name 값을 저장
+
+    const obj = {
+      name: name,
+      value: getRandomNumber(1, 100),
+    };
+    objectsArray.push(obj);
+  }
+
   const makeGraph = () => {
     // setting canvas
-    const width = 400;
-    const height = 400;
+    const width = 1500;
+    const height = 800;
     const margin = { top: 40, left: 40, bottom: 40, right: 40 };
 
     const svg = d3
@@ -20,19 +49,12 @@ const D3Chart = () => {
       .attr("height", height);
 
     // data
-    const data = [
-      { month: "1월", value: 40, color: "red" },
-      { month: "2월", value: 10, color: "orange" },
-      { month: "3월", value: 60, color: "yellow" },
-      { month: "4월", value: 95, color: "green" },
-      { month: "5월", value: 30, color: "blue" },
-      { month: "6월", value: 78, color: "indigo" },
-    ];
+    const data = objectsArray;
 
     // setting axis
     const x = d3
       .scaleBand()
-      .domain(data.map((d) => d.month))
+      .domain(data.map((d) => d.name))
       .range([margin.left, width - margin.right]);
 
     const y = d3
@@ -52,7 +74,10 @@ const D3Chart = () => {
       g
         .attr("transform", `translate(${margin.left}, 0)`)
         .call(
-          d3.axisLeft(y).tickValues([0, 20, 40, 60, 80, 100]).tickSize(-width)
+          d3
+            .axisLeft(y)
+            .tickValues([0, 20, 40, 60, 80, 100, 120])
+            .tickSize(-width)
         )
         .call((g) => g.select(".domain").remove())
         .attr("class", "grid");
@@ -78,7 +103,7 @@ const D3Chart = () => {
     //line chart
     const line = d3
       .line()
-      .x((d) => x(d.month) + x.bandwidth() / 2)
+      .x((d) => x(d.name) + x.bandwidth() / 2)
       .y((d) => y(d.value));
 
     svg
@@ -97,7 +122,7 @@ const D3Chart = () => {
       .enter()
       .append("text")
       .text((d) => d.value)
-      .attr("x", (data) => x(data.month) + x.bandwidth() / 2)
+      .attr("x", (data) => x(data.name) + x.bandwidth() / 2)
       .attr("y", (data) => y(data.value) - 5)
       .attr("fill", "black")
       .attr("font-family", "Tahoma")
@@ -117,7 +142,7 @@ const D3Chart = () => {
 export default D3Chart;
 
 const Container = styled.div`
-  width: 90vw;
-  max-width: 900px;
+  /* width: 300vw; */
+  /* max-width: 1000px; */
   margin-top: 300px;
 `;
